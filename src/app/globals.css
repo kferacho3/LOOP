@@ -10,7 +10,6 @@
   --color-muted: #616a60;
   --color-line: #d9ddd1;
   --font-sans: var(--font-body), Arial, sans-serif;
-  --font-serif: var(--font-editorial), Georgia, serif;
   --ease-liquid: cubic-bezier(.16,1,.3,1);
 }
 @layer base {
@@ -24,14 +23,14 @@
   [data-dark] :focus-visible { outline-color:#efcbb7; }
   button:disabled { cursor:not-allowed; }
   p { text-wrap:pretty; }
-  h1,h2,h3 { text-wrap:balance; }
+  h1,h2,h3 { text-wrap:balance; font-weight:700; }
   input,textarea,select { font-size:16px; }
 }
 @utility shell { width:100%; max-width:1536px; margin-inline:auto; padding-inline:clamp(22px,4.5vw,80px); }
 @utility eyebrow { font-size:11px; line-height:1.5; letter-spacing:.16em; text-transform:uppercase; font-weight:700; }
 @utility liquid { transition-duration:180ms; transition-timing-function:var(--ease-liquid); transition-property:transform,background-color,border-color,color,opacity; }
-@utility display { font-size:clamp(3.1rem,6vw,6.6rem); letter-spacing:-.065em; font-weight:500; line-height:1.02; }
-@utility section-title { font-size:clamp(2.7rem,4.6vw,5rem); letter-spacing:-.055em; font-weight:500; line-height:1.05; }
+@utility display { font-size:clamp(3.1rem,6vw,6.6rem); letter-spacing:-.045em; font-weight:700; line-height:1.02; }
+@utility section-title { font-size:clamp(2.7rem,4.6vw,5rem); letter-spacing:-.04em; font-weight:700; line-height:1.05; }
 @utility soft-grid { background-image:linear-gradient(to right,#18251f09 1px,transparent 1px); background-size:25% 100%; }
 @utility field { display:block; width:100%; border:1px solid #c6cfc1; background:#fffefa; border-radius:12px; padding:13px 15px; color:#18251f; transition:border-color 160ms; }
 @utility form-label { display:block; font-size:13px; font-weight:600; margin-bottom:8px; }

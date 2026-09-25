@@ -17,7 +17,7 @@ Open `http://localhost:3000`. The root `.env` already exists with blank credenti
 
 This first install creates `package-lock.json`. Review and commit that lockfile, then use `npm ci` in CI/Vercel. Direct application dependencies are pinned. The separate Studio uses its own install and lockfile. Dependency resolution and advisories must be reviewed on first install; direct pins are not a substitute for a resolved lockfile.
 
-`next/font/google` downloads the configured Manrope and Instrument Serif faces during a network-connected build and Next self-hosts their output. No font files are distributed in this archive. Initial stock photos are remote, with a bundled illustration fallback. Cache reviewed photos locally before publishing:
+`next/font/google` downloads the configured Manrope face during a network-connected build and Next self-hosts their output. No font files are distributed in this archive. Initial stock photos are remote, with a bundled illustration fallback. Cache reviewed photos locally before publishing:
 
 ```bash
 npm run media:download
