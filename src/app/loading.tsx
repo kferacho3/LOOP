@@ -1,0 +1,1 @@
+export default function Loading(){return <div role="status" className="shell py-20"><span className="sr-only">Loading the next page</span><div className="mb-8 h-3 w-32 rounded-full bg-line"/><div className="h-16 max-w-2xl rounded-2xl bg-linen"/><div className="mt-5 h-16 w-2/3 max-w-lg rounded-2xl bg-linen"/><div className="mt-12 h-80 rounded-3xl bg-linen"/></div>;}

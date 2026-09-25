@@ -1,0 +1,9 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { getSiteContent } from '@/lib/content';
+import { eventDate } from '@/lib/utils';
+import { PageIntro } from '@/components/page-intro';
+import { ButtonLink,TextLink } from '@/components/ui';
+type Props={params:Promise<{slug:string}>};
+export async function generateMetadata({params}:Props):Promise<Metadata>{const {slug}=await params;const {events}=await getSiteContent();return {title:events.find(e=>e.slug===slug)?.title||'Event',alternates:{canonical:`/events/${slug}`}};}
+export default async function EventPage({params}:Props){const {slug}=await params;const {events}=await getSiteContent();const event=events.find(e=>e.slug===slug);if(!event)notFound();return <><PageIntro eyebrow={event.category} title={event.title} emphasis="Together, in community." description={event.description} image={event.image}/><section className="shell pb-24"><div className="grid gap-8 rounded-3xl border border-line bg-linen p-8 md:grid-cols-3"><div><h2 className="eyebrow text-muted">When</h2><p className="mt-4 text-lg">{eventDate(event.startsAt,event.timeZone)}</p><p className="mt-2 text-sm text-muted">{new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:event.timeZone,timeZoneName:'short'}).format(new Date(event.startsAt))}</p></div><div><h2 className="eyebrow text-muted">Where</h2><p className="mt-4 text-lg">{event.location}</p></div><div>{event.registrationUrl?<ButtonLink href={event.registrationUrl}>View registration</ButtonLink>:<ButtonLink href="/contact">Ask about this event</ButtonLink>}<a href={`/api/events/${event.slug}/calendar`} className="mt-4 block py-3 text-sm underline underline-offset-4">Add to your calendar (.ics)</a></div></div><TextLink href="/events" className="mt-9">Back to community events</TextLink></section></>;}

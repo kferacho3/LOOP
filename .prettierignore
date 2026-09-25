@@ -1,0 +1,8 @@
+node_modules
+.next
+public
+*.ndjson
+*.json
+playwright-report
+test-results
+preview

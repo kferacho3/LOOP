@@ -1,0 +1,27 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validateSubmission,supportTypes,volunteerAreas} from '../src/lib/validation.ts';
+import {safeHttpsUrl,cx,slugify,eventDate} from '../src/lib/utils.ts';
+import {createCalendarEvent,escapeCalendarText,foldCalendarLine,utcCalendarDate} from '../src/lib/calendar.ts';
+const input=()=>({kind:'support',name:'A person',email:'person@example.com',phone:'',contactMethod:'email',selections:['Housing support'],organization:'',organizationType:'',city:'',state:'',message:'A general question.',consent:true,website:'',turnstileToken:'',requestId:'dcf6eaf6-f259-4197-9ba6-54460f5c2585'});
+function invalid(change:Record<string,unknown>,key:string){const result=validateSubmission({...input(),...change});assert.equal(result.ok,false);if(!result.ok)assert.ok(result.errors[key],JSON.stringify(result.errors));}
+test('support request accepts all nine brief categories',()=>{assert.equal(supportTypes.length,9);for(const selection of supportTypes)assert.equal(validateSubmission({...input(),selections:[selection]}).ok,true);});
+test('volunteer accepts the brief’s nine interest areas',()=>{assert.equal(volunteerAreas.length,9);assert.equal(validateSubmission({...input(),kind:'volunteer',selections:[...volunteerAreas]}).ok,true);});
+test('partnership validates organization and type',()=>{assert.equal(validateSubmission({...input(),kind:'partner',organization:'An organization',organizationType:'Nonprofit'}).ok,true);invalid({kind:'partner'},'organization');invalid({kind:'partner',organization:'Org',organizationType:'invalid'},'organizationType');});
+test('contact needs a message',()=>{invalid({kind:'contact',message:''},'message');assert.equal(validateSubmission({...input(),kind:'contact'}).ok,true);});
+test('newsletter needs no name, but requires opt-in and email',()=>{assert.equal(validateSubmission({...input(),kind:'newsletter',name:'',selections:[]}).ok,true);invalid({kind:'newsletter',consent:false},'consent');invalid({kind:'newsletter',email:''},'email');});
+test('phone-only contact works without requiring an email',()=>{assert.equal(validateSubmission({...input(),email:'',contactMethod:'phone',phone:'+1 (212) 555-0100'}).ok,true);invalid({email:'',contactMethod:'phone'},'phone');});
+test('invalid contact methods and addresses are rejected',()=>{invalid({email:'not-an-email'},'email');invalid({phone:'call me sometime'},'phone');invalid({phone:'-------'},'phone');invalid({contactMethod:'public comment'},'contactMethod');});
+test('explicit consent cannot be replaced by a truthy string',()=>{invalid({consent:'true'},'consent');invalid({consent:1},'consent');});
+test('unknown and empty selections are rejected',()=>{invalid({selections:[]},'selections');invalid({selections:['Legal representation']},'selections');});
+test('selection duplicates are normalized',()=>{const result=validateSubmission({...input(),selections:['Housing support','Housing support']});assert.ok(result.ok);assert.deepEqual(result.data.selections,['Housing support']);});
+test('honeypot and invalid request identifiers reject submission',()=>{invalid({website:'spam.example'},'form');invalid({requestId:'not-a-uuid'},'form');});
+test('length and control-character boundaries are enforced',()=>{invalid({name:'a'.repeat(81)},'name');invalid({message:'a'.repeat(1001)},'message');invalid({name:'abc\u0001'},'name');assert.equal(validateSubmission({...input(),message:'a'.repeat(1000)}).ok,true);});
+test('no unexpected fields reach the delivery object',()=>{const r=validateSubmission({...input(),ssn:'123-45-6789',admin:true});assert.ok(r.ok);assert.equal('ssn' in r.data,false);assert.equal('admin' in r.data,false);});
+test('unknown forms and malformed JSON values are rejected',()=>{invalid({kind:'payment'},'kind');for(const r of [null,[],0,'text'])assert.equal(validateSubmission(r).ok,false);});
+test('external links require HTTPS and forbid credentials',()=>{assert.equal(safeHttpsUrl('https://example.com/donate'),'https://example.com/donate');for(const u of ['javascript:alert(1)','http://example.com','data:text/html,test','https://name:pass@example.com',false,undefined])assert.equal(safeHttpsUrl(u),undefined);});
+test('utility functions preserve class names and canonical slugs',()=>{assert.equal(cx('one',false,'two',null,undefined),'one two');assert.equal(slugify('Youth & Éducation!'),'youth-education');assert.equal(eventDate('invalid','invalid'),'Date to be confirmed');});
+test('calendar text escapes commas, semicolons, backslashes and line breaks',()=>{assert.equal(escapeCalendarText('A,B;C\\D\nE'),'A\\,B\\;C\\\\D\\nE');});
+test('calendar folding is bounded by UTF-8 bytes, not character count',()=>{const line='SUMMARY:'+('💚 Together, '.repeat(30));const folded=foldCalendarLine(line);for(const part of folded.split('\r\n'))assert.ok(Buffer.byteLength(part,'utf8')<=75);assert.equal(folded.replace(/\r\n /g,''),line);});
+test('calendar dates normalize offsets to UTC',()=>{assert.equal(utcCalendarDate('2026-10-01T10:00:00-04:00'),'20261001T140000Z');});
+test('calendar has stable UID and no fabricated end time',()=>{const s=createCalendarEvent({slug:'test-event',title:'Meet, together',description:'One\nTwo',startsAt:'2026-10-01T14:00:00Z',location:'Community space'},'https://example.com',new Date('2026-09-24T12:00:00Z'));assert.match(s,/UID:test-event@example.com/);assert.match(s,/DTSTART:20261001T140000Z/);assert.match(s,/SUMMARY:Meet\\, together/);assert.doesNotMatch(s,/DTEND/);assert.ok(s.endsWith('END:VCALENDAR\r\n'));});

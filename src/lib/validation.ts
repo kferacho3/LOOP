@@ -1,0 +1,45 @@
+export const supportTypes = ['Court support','Employment','Reentry services','Transportation','Housing support','Family support','Housing/resource referrals','Youth programs','Other'] as const;
+export const volunteerAreas = ['Courthouse outreach','Community canvassing','Events','Youth programs','Transportation support','Administrative help','Resource research','Housing resource navigation','Community engagement'] as const;
+export const partnerTypes = ['Business','Nonprofit','Employer','School','Community organization','Sponsor','Housing partner','Other'] as const;
+export const formKinds = ['support','volunteer','partner','contact','newsletter'] as const;
+export type FormKind = typeof formKinds[number];
+export type Submission = {kind:FormKind;name:string;email:string;phone:string;contactMethod:'email'|'phone';selections:string[];organization:string;organizationType:string;city:string;state:string;message:string;consent:true;website:string;turnstileToken:string;requestId:string};
+export type ValidationResult = {ok:true;data:Submission}|{ok:false;errors:Record<string,string>};
+export function validateSubmission(input:unknown): ValidationResult {
+  if(!input||typeof input!=='object'||Array.isArray(input)) return {ok:false,errors:{form:'Please review your information.'}};
+  const r=input as Record<string,unknown>, errors:Record<string,string>={};
+  const string=(key:string,max:number,required=false)=>{
+    const value=typeof r[key]==='string'?(r[key] as string).trim():'';
+    if(value.length>max) errors[key]=`Please use ${max} characters or fewer.`;
+    if(required&&!value) errors[key]='Please complete this field.';
+    if(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(value)) errors[key]='Please remove unsupported characters.';
+    return value;
+  };
+  const kind=r.kind as FormKind;
+  if(!formKinds.includes(kind)) errors.kind='Choose a valid form.';
+  const name=string('name',80,kind!=='newsletter');
+  const email=string('email',254,kind==='newsletter');
+  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email='Enter a valid email address.';
+  const phone=string('phone',32);
+  if(phone&&(!/^[+\d\s().-]{7,32}$/.test(phone)||phone.replace(/\D/g,'').length<7||phone.replace(/\D/g,'').length>15)) errors.phone='Enter a valid phone number.';
+  const contactMethod=kind==='newsletter'?'email':r.contactMethod;
+  if(contactMethod!=='email'&&contactMethod!=='phone') errors.contactMethod='Choose a safe way to contact you.';
+  if(contactMethod==='email'&&!email) errors.email='Add an email address for your reply.';
+  if(contactMethod==='phone'&&!phone) errors.phone='Add a phone number for your reply.';
+  const organization=string('organization',120,kind==='partner');
+  const organizationType=string('organizationType',60,kind==='partner');
+  if(kind==='partner'&&!partnerTypes.includes(organizationType as typeof partnerTypes[number])) errors.organizationType='Choose an organization type.';
+  const city=string('city',80),state=string('state',60);
+  const message=string('message',1000,kind==='contact');
+  const website=string('website',100);
+  if(website) errors.form='We could not verify this request. Please try again.';
+  const selections=Array.isArray(r.selections)?[...new Set(r.selections.filter((v):v is string=>typeof v==='string'))]:[];
+  const allowed:readonly string[]=kind==='support'?supportTypes:kind==='volunteer'?volunteerAreas:[];
+  if((kind==='support'||kind==='volunteer')&&(!selections.length||selections.length>allowed.length||selections.some(v=>!allowed.includes(v)))) errors.selections='Select at least one valid option.';
+  if(r.consent!==true) errors.consent=kind==='newsletter'?'Please confirm you want email updates.':'Please confirm that LOOP may contact you about this request.';
+  const requestId=string('requestId',36,true);
+  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestId)) errors.form='Please refresh the page and try again.';
+  const turnstileToken=string('turnstileToken',2048);
+  if(Object.keys(errors).length) return {ok:false,errors};
+  return {ok:true,data:{kind,name,email,phone,contactMethod:contactMethod as 'email'|'phone',selections:allowed.length?selections:[],organization,organizationType,city,state,message,consent:true,website,turnstileToken,requestId}};
+}

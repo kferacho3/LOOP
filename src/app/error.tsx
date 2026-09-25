@@ -1,0 +1,2 @@
+'use client';
+export default function ErrorPage({reset}:{reset:()=>void}){return <section className="shell py-24"><p className="eyebrow text-muted">Let’s try that again</p><h1 className="section-title mt-7">Something didn’t load.</h1><p className="mt-6 max-w-lg leading-7 text-muted">Your place is still here. Please try again, or return to the homepage.</p><button onClick={reset} className="mt-8 min-h-12 rounded-full bg-ink px-7 py-3 text-sm text-paper">Try again</button><a href="/" className="ml-6 inline-block py-3 underline">Return home</a></section>;}

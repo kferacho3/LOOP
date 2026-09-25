@@ -1,0 +1,12 @@
+{
+  "project": "LOOP website",
+  "files": 131,
+  "rootEnvironmentIncluded": true,
+  "secretValuesIncluded": false,
+  "fontFilesIncluded": false,
+  "unitTestsPassed": 20,
+  "staticLayoutsChecked": 18,
+  "nextProductionBuildVerified": false,
+  "realProviderDeliveryVerified": false,
+  "notes": "See docs/TEST-REPORT.md for exact verification scope."
+}

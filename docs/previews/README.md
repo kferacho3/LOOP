@@ -1,0 +1,1 @@
+Source-derived static inspection renders. These use the bundled local illustration and system fonts instead of live stock photographs / Next fonts. They are not screenshots of a deployed Next.js app and do not verify hydration, animation or integrations. See ../TEST-REPORT.md.

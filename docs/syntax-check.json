@@ -1,0 +1,7 @@
+{
+  "compiler": "TypeScript 5.8.3 transpileModule",
+  "scope": "Syntax/transpilation and local import target inspection only; not a dependency-resolved typecheck",
+  "files": 57,
+  "errors": [],
+  "missingLocalImports": []
+}

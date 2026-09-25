@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "src": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1800&q=85",
+    "alt": "Four people standing arm in arm in warm evening light.",
+    "position": "50% 50%",
+    "credit": "Unsplash",
+    "creditUrl": "https://unsplash.com",
+    "stock": true
+  },
+  "community": {
+    "src": "https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "alt": "People taking part in a community volunteer activity.",
+    "credit": "Pexels",
+    "creditUrl": "https://www.pexels.com/photo/6646918/",
+    "stock": true
+  },
+  "youth": {
+    "src": "https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "alt": "A small group collaborating around a table.",
+    "credit": "Pexels",
+    "creditUrl": "https://www.pexels.com/photo/7688460/",
+    "stock": true
+  },
+  "family": {
+    "src": "https://images.pexels.com/photos/1974508/pexels-photo-1974508.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "alt": "Family spending time together outdoors.",
+    "credit": "Pexels",
+    "creditUrl": "https://www.pexels.com/photo/1974508/",
+    "stock": true
+  },
+  "home": {
+    "src": "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "alt": "The exterior of a home with green space.",
+    "credit": "Pexels",
+    "creditUrl": "https://www.pexels.com/photo/106399/",
+    "stock": true
+  },
+  "connection": {
+    "src": "https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "alt": "People sharing a conversation around a table.",
+    "credit": "Pexels",
+    "creditUrl": "https://www.pexels.com/photo/3184433/",
+    "stock": true
+  },
+  "journey": {
+    "src": "https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "alt": "A road stretching toward the horizon.",
+    "credit": "Pexels",
+    "creditUrl": "https://www.pexels.com/photo/210182/",
+    "stock": true
+  }
+}

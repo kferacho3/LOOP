@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1200" viewBox="0 0 1000 1200" role="img" aria-label="An illustration of people coming together">
+<defs><linearGradient id="sky" x2=".7" y2="1"><stop stop-color="#e5d9c3"/><stop offset="1" stop-color="#b7c9ac"/></linearGradient><linearGradient id="ground" y2="1" x2="0"><stop stop-color="#c3b498"/><stop offset="1" stop-color="#687c64"/></linearGradient></defs>
+<path fill="url(#sky)" d="M0 0h1000v1200H0z"/><circle cx="730" cy="255" r="142" fill="#f7ead1"/><path d="M0 687Q240 515 518 696T1000 603V1200H0" fill="#879f7e"/><path d="M0 819q266-166 519 26t481-57v412H0" fill="url(#ground)"/>
+<path d="M843 1020q-81-293 69-548M877 744q-151-104-149-175 116 15 149 175M870 800q119-93 113-180-101 38-113 180M879 655q-90-138-70-209 114 79 70 209" fill="#385748" stroke="#385748" stroke-width="10"/>
+<path d="M99 1200V879q0-227 199-227 195 0 195 227v321" fill="#304b3d"/><path d="M483 1200V850q0-175 175-175 184 0 184 188v337" fill="#eedbc0"/>
+<path d="M269 632h79v104q-40 48-79 0" fill="#9b6247"/><ellipse cx="306" cy="539" rx="112" ry="131" fill="#a76c4d"/><path d="M199 568q-62-237 106-218 180-25 116 227l-37-131q-102 50-180 4" fill="#242b23"/>
+<path d="M621 652h82v100q-40 49-82 0" fill="#ca956c"/><ellipse cx="662" cy="572" rx="107" ry="122" fill="#d4a17b"/><path d="M553 578q-8-184 125-172 112-3 99 153-39-20-38-81-69 81-181 43" fill="#514536"/>
+<path d="M365 853q100 88 213 41" fill="none" stroke="#a76c4d" stroke-linecap="round" stroke-width="57"/><path d="M706 811q-87 153-227 172" fill="none" stroke="#d4a17b" stroke-linecap="round" stroke-width="57"/>
+<path d="M294 595q20 12 39-1M646 621q19 12 37-1" fill="none" stroke="#593d2b" stroke-linecap="round" stroke-width="5"/>
+<path d="M0 1139q190-33 410 41t590-15v35H0" fill="#687c64" opacity=".5"/>
+</svg>

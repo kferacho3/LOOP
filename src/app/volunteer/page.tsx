@@ -1,0 +1,4 @@
+import type { Metadata } from 'next';
+import { FormPage } from '@/components/form-page';
+export const metadata:Metadata={title:'Volunteer',alternates:{canonical:'/volunteer'}};
+export default function Volunteer(){return <FormPage kind="volunteer" eyebrow="Give your time. Make a connection." title="Bring what makes" emphasis="you, you." description="There’s more than one way to show up. Explore courthouse outreach, community canvassing, events, youth programs, transportation support, administrative help, research, housing navigation, and community engagement." asideTitle="Community is something we build together." asideBody="Tell us where your interests meet LOOP’s work. This is an interest form, not an automatic placement. Roles, training, eligibility, and availability are confirmed with LOOP before participation."/>;}

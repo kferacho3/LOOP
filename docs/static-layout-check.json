@@ -1,0 +1,149 @@
+{
+  "scope": "Source-derived static HTML inspection with Tailwind 4.1.10, system fonts and local fallback illustration. Not a Next.js runtime, accessibility certification or hydration test.",
+  "results": [
+    {
+      "view": "desktop",
+      "route": "/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/about/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/programs/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/get-help/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/volunteer/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/partner/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/events/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/donate/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "desktop",
+      "route": "/contact/",
+      "width": 1440,
+      "documentWidth": 1440,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/about/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/programs/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/get-help/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/volunteer/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/partner/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/events/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/donate/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    },
+    {
+      "view": "mobile",
+      "route": "/contact/",
+      "width": 390,
+      "documentWidth": 390,
+      "headingCount": 1,
+      "missingImages": 0
+    }
+  ]
+}

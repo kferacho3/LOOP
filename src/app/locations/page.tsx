@@ -1,0 +1,6 @@
+import type { Metadata } from 'next';
+import { getSiteContent } from '@/lib/content';
+import { PageIntro } from '@/components/page-intro';
+import { ButtonLink } from '@/components/ui';
+export const metadata:Metadata={title:'Our communities',alternates:{canonical:'/locations'}};
+export default async function Locations(){const {locations,settings}=await getSiteContent();return <><PageIntro eyebrow="Our communities" title="Rooted locally." emphasis="Open to possibility." description="LOOP’s structure makes room to grow across communities and states. Only confirmed active service areas are published here."/><section className="shell pb-24">{locations.length?<div className="grid gap-6 md:grid-cols-3">{locations.map(l=><article key={l.slug} className="rounded-2xl border border-line p-8"><h2 className="text-2xl">{l.name}</h2><p className="mt-5 mb-7 text-sm leading-7 text-muted">{l.serviceArea}</p><ButtonLink href={`/locations/${l.slug}`}>Explore this community</ButtonLink></article>)}</div>:<div className="rounded-3xl bg-linen p-9"><p className="max-w-xl text-base leading-8 text-muted">Active service areas will be listed when confirmed. {settings.serviceNote}</p><ButtonLink href="/contact" className="mt-7">Ask about your community</ButtonLink></div>}</section></>;}

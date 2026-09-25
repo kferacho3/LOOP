@@ -1,0 +1,25 @@
+{
+  "name": "loop-content-studio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "seed": "sanity dataset import seed.ndjson production"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "sanity": "^4.0.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/react": "19.0.12"
+  }
+}

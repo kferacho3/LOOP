@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+!.env.test.example
+*.tsbuildinfo
+.DS_Store
+.vercel/
+playwright-report/
+test-results/
+media-review/
+studio/dist/
