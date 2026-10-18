@@ -3,7 +3,6 @@ import { Heart, ArrowUpRight } from 'lucide-react';
 import { getSiteContent } from '@/lib/content';
 import { PageIntro } from '@/components/page-intro';
 import { ButtonLink, Eyebrow, TextLink } from '@/components/ui';
-import { LoopMark } from '@/components/logo';
 export const metadata: Metadata = {
   description:
     'Donate to LOOP through PayPal and support youth education, reentry, housing resources, family connection, and nonprofit community programs.',
@@ -15,9 +14,9 @@ export default async function Donate() {
   return (
     <>
       <PageIntro
-        eyebrow="Give possibility a little more room"
-        title="Invest in people."
-        emphasis="Make more possible."
+        eyebrow="Support our nonprofit"
+        title="Donate to LOOP"
+        emphasis=""
         description="Your support can help LOOP reduce practical barriers and bring people closer to resources, opportunities, and one another."
       />
       <section className="shell grid items-start gap-12 pb-24 lg:grid-cols-2">
@@ -52,11 +51,9 @@ export default async function Donate() {
           className="relative overflow-hidden rounded-[32px] bg-forest p-8 text-paper md:p-12"
           data-dark
         >
-          <LoopMark className="mb-14 h-16 w-24 text-moss" />
+          
           <h2 className="text-4xl leading-[1.05] tracking-[-.03em]">
-            A little support.
-            <br />
-            <span className="text-peach">A world of possibility.</span>
+            Make a donation
           </h2>
           {settings.donationUrl ? (
             <>

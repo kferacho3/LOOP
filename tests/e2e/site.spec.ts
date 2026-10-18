@@ -78,9 +78,9 @@ test('unknown event and program return not-found', async ({ page }) => {
 
 test('coat drive, sponsor, and new nonprofit pages are available', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Give warmth.Share hope.');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('LOOP Community Coat Drive');
   await expect(
-    page.getByRole('img', { name: 'One Warm Coat — Official Member of Nonprofit Network' }),
+    page.getByRole('img', { name: 'One Warm Coat Official Member of Nonprofit Network' }),
   ).toBeVisible();
   for (const route of [
     '/community-initiatives',

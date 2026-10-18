@@ -14,11 +14,7 @@ export function Footer({ settings, ready }: { settings: SiteSettings; ready: boo
       <div className="shell grid gap-14 pb-16 lg:grid-cols-[1.1fr_1fr]">
         <div>
           <Eyebrow>Stay in the LOOP</Eyebrow>
-          <h2 className="text-4xl tracking-[-.03em]">
-            Good things are
-            <br />
-            <span className="text-clay">better shared.</span>
-          </h2>
+          <h2 className="text-4xl tracking-[-.03em]">Community updates</h2>
           <p className="mt-5 mb-7 max-w-sm text-sm leading-6 text-muted">
             Hear about community events, ways to help, and what’s happening at LOOP.
           </p>
@@ -29,6 +25,7 @@ export function Footer({ settings, ready }: { settings: SiteSettings; ready: boo
             <p className="eyebrow mb-5 text-muted">Explore</p>
             {[
               ['/about', 'About LOOP'],
+              ['/about/organization-documents', 'Organization documents'],
               ['/programs', 'Our programs'],
               ['/community-initiatives', 'Community Initiatives'],
               ['/impact', 'Our impact'],
@@ -73,7 +70,6 @@ export function Footer({ settings, ready }: { settings: SiteSettings; ready: boo
           <p className="col-span-2 mt-5 max-w-md text-sm leading-7 text-muted sm:col-span-3">
             Liberation of Oppressed People.
             <br />
-            Practical support. A shared way forward.
             <br />
             <a href={`mailto:${settings.contactEmail}`} className="break-all">
               {settings.contactEmail}

@@ -1,130 +1,100 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = {
-  alternates: { canonical: '/' },
-  description:
-    'LOOP empowers youth, families, and justice-impacted communities. Support our community coat drive, explore programs, volunteer, or donate.',
-};
 import Link from 'next/link';
 import { CoatDrive } from '@/components/coat-drive';
 import { Photo } from '@/components/photo';
 import { ButtonLink, ClosingCTA, TextLink } from '@/components/ui';
 import { getSiteContent } from '@/lib/content';
-import { media } from '@/content/media';
+import photos from '@/content/community-media.json';
+import { introduction, mission, campIntro, campDetails } from '@/content/approved-copy';
+export const metadata: Metadata = { alternates: { canonical: '/' }, description: introduction };
 export default async function Home() {
   const { programs } = await getSiteContent();
   return (
     <>
       <CoatDrive hero />
-      <section className="action-strip shell" aria-label="Connect with LOOP">
+      <nav className="home-actions shell" aria-label="Get involved with LOOP">
         {[
-          ['/get-help', 'Find support', 'A place to start'],
-          ['/volunteer', 'Give your time', 'Show up for community'],
-          ['/partner', 'Become a partner', 'Create opportunity together'],
-          ['/ways-to-give', 'Make a difference', 'Help move our mission forward'],
-        ].map(([href, title, sub]) => (
-          <Link href={href} key={href}>
-            <span>{sub}</span>
-            <strong>{title} ↗</strong>
+          ['/get-help', 'Get Support'],
+          ['/volunteer', 'Volunteer'],
+          ['/partner', 'Partner With LOOP'],
+          ['/donate', 'Donate'],
+        ].map(([h, t]) => (
+          <Link href={h} key={h}>
+            {t}
+            <span aria-hidden>↗</span>
           </Link>
         ))}
-      </section>
-      <section className="shell mission-block">
-        <p className="eyebrow">LIBERATION OF OPPRESSED PEOPLE</p>
+      </nav>
+      <section className="shell home-introduction">
         <div>
-          <h2 className="section-title">
-            Opportunity opens doors.
-            <br />
-            <span className="text-clay">Community keeps them open.</span>
-          </h2>
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-muted">
-            LOOP is a nonprofit empowering youth, families, and justice-impacted communities through
-            education, pathways to stable housing, essential resources, and opportunities to build
-            independent, thriving lives.
-          </p>
-          <TextLink href="/about" className="mt-8">
-            Our story. Our purpose.
+          <p className="eyebrow">LIBERATION OF OPPRESSED PEOPLE</p>
+          <h2>{introduction}</h2>
+        </div>
+        <div>
+          <p className="eyebrow">Mission</p>
+          <p className="body-copy">{mission}</p>
+          <TextLink href="/about" className="mt-7">
+            About LOOP
           </TextLink>
         </div>
       </section>
-      <section className="community-banner">
-        <Photo image={media.community} caption className="h-[360px] md:h-[520px]" sizes="100vw" />
-        <div className="shell">
-          <p>
-            Built from lived experience.
-            <br />
-            <span>Rooted in community.</span>
-          </p>
-        </div>
-      </section>
-      <section className="shell py-20 md:py-28">
-        <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+      <section className="shell pb-20 md:pb-28">
+        <div className="section-header">
           <div>
-            <p className="eyebrow mb-5">What we do</p>
-            <h2 className="section-title">
-              Real support.
-              <br />
-              <span className="text-clay">Lasting possibility.</span>
-            </h2>
+            <p className="eyebrow mb-4">What we do</p>
+            <h2 className="section-title">Our programs</h2>
           </div>
-          <TextLink href="/programs">Explore our programs</TextLink>
+          <TextLink href="/programs">View all programs</TextLink>
         </div>
-        <div className="program-grid mt-14">
+        <div className="program-editorial">
           {programs.map((p, i) => (
-            <Link href={`/programs/${p.slug}`} key={p.slug}>
-              <span className="eyebrow">
-                0{i + 1} / {p.category}
-              </span>
-              <h3>{p.title}</h3>
-              <p>{p.summary}</p>
-              <span className="program-arrow" aria-hidden>
-                ↗
-              </span>
+            <Link
+              key={p.slug}
+              href={`/programs/${p.slug}`}
+              className={i === 0 ? 'program-lead' : ''}
+            >
+              {i === 0 && <Photo image={photos.workshop} className="program-lead-photo" />}
+              <div className="program-content">
+                <span className="eyebrow">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{p.title}</h3>
+                <p>{p.summary}</p>
+                <span className="program-more">
+                  Program details <span aria-hidden>↗</span>
+                </span>
+              </div>
             </Link>
           ))}
         </div>
       </section>
-      <section className="camp-band">
+      <section className="camp-editorial">
         <div className="shell grid items-center gap-12 py-20 lg:grid-cols-2">
-          <Photo image={media.youth} caption className="h-[320px] md:h-[460px]" />
+          <Photo image={photos.learning} className="h-[360px] md:h-[540px]" />
           <div>
-            <p className="eyebrow mb-6">LOOP Summer Academic & Entrepreneurship Camp</p>
-            <h2 className="section-title">
-              Big ideas.
-              <br />
-              Bright futures.
-            </h2>
-            <p className="mt-7 text-lg leading-8">
-              Six weeks. Twenty young people. A free program that turns curiosity into
-              confidence—and business ideas into real-world experience.
-            </p>
-            <p className="mt-5 leading-7">
-              Academic enrichment, financial literacy, hands-on learning, and a chance to launch at
-              the LOOP Youth Business Expo.
-            </p>
+            <p className="eyebrow mb-5">Education and Youth Development</p>
+            <h2 className="section-title">LOOP Summer Academic and Entrepreneurship Camp</h2>
+            <p className="body-copy mt-7">{campIntro}</p>
+            <p className="body-copy mt-5">{campDetails}</p>
             <ButtonLink href="/programs/summer-camp" className="mt-8">
-              Discover the camp
+              Program information
             </ButtonLink>
           </div>
         </div>
       </section>
-      <section className="shell grid gap-12 py-20 md:grid-cols-2 md:py-28">
-        <div>
-          <p className="eyebrow mb-6">Community initiatives</p>
-          <h2 className="section-title">
-            Care becomes
-            <br />
-            <span className="text-clay">action.</span>
-          </h2>
-        </div>
-        <div>
-          <p className="text-lg leading-8 text-muted">
-            From collecting winter essentials to opening doors for young entrepreneurs, our work
-            begins with what our neighbors need—and grows with people willing to help.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-5">
-            <ButtonLink href="/community-initiatives">See what’s happening</ButtonLink>
-            <TextLink href="/contact">Connect with LOOP</TextLink>
+      <section className="shell py-20 md:py-28">
+        <div className="section-header">
+          <div>
+            <p className="eyebrow mb-4">Our community</p>
+            <h2 className="section-title">Community Initiatives</h2>
           </div>
+          <TextLink href="/community-initiatives">Explore our initiatives</TextLink>
+        </div>
+        <div className="community-photo-pair">
+          <Photo image={photos['community-group']} className="h-[330px] md:h-[440px]" />
+          <Photo image={photos.ceremony} className="h-[330px] md:h-[440px]" />
+        </div>
+        <div className="mt-8 flex flex-wrap gap-7">
+          <TextLink href="/community-initiatives/coat-drive">LOOP Community Coat Drive</TextLink>
+          <TextLink href="/stories">Watch the community video</TextLink>
         </div>
       </section>
       <ClosingCTA />

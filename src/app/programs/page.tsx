@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PageIntro } from '@/components/page-intro';
 import { Photo } from '@/components/photo';
 import { ButtonLink, TextLink, ClosingCTA } from '@/components/ui';
+import { partnership } from '@/content/approved-copy';
 import { getSiteContent } from '@/lib/content';
 export const metadata: Metadata = {
   description:
@@ -15,9 +16,9 @@ export default async function Programs() {
     <>
       <PageIntro
         eyebrow="Our programs"
-        title="Different needs."
-        emphasis="Connected support."
-        description="Creating opportunities through education, access, and community-centered support. Our connected programs help youth, families, and justice-impacted individuals build stability and move forward."
+        title="Our Programs"
+        emphasis=""
+        description="Creating opportunities through education, access, and community centered support."
       />
       <div className="shell pb-8">
         <ButtonLink href="/programs/summer-camp">Explore our free summer camp</ButtonLink>
@@ -52,7 +53,8 @@ export default async function Programs() {
                   {String(i + 1).padStart(2, '0')} / {p.category}
                 </p>
                 <h2 className="text-4xl leading-[1.1] tracking-[-.03em] md:text-5xl">{p.title}</h2>
-                <p className="mt-6 max-w-xl text-base leading-8 text-muted">{p.summary}</p>
+                <p className="mt-6 max-w-xl text-base leading-8 text-muted">{p.body}</p>
+                {p.summary !== p.body && <p className="mt-4 max-w-xl text-base leading-8 text-muted">{p.summary}</p>}
                 <div className="mt-8 flex flex-wrap items-center gap-7">
                   <ButtonLink href={`/get-help?need=${encodeURIComponent(p.supportType)}`}>
                     Ask about support
@@ -65,6 +67,13 @@ export default async function Programs() {
         ))}
       </div>
       <p className="shell py-8 text-xs leading-6 text-muted">{settings.serviceNote}</p>
+      <section className="shell pb-20">
+        <h2 className="section-title">Partner with LOOP</h2>
+        <p className="body-copy mt-7 max-w-3xl">{partnership}</p>
+        <ButtonLink href="/partner" className="mt-7">
+          Partner with LOOP
+        </ButtonLink>
+      </section>
       <ClosingCTA />
     </>
   );

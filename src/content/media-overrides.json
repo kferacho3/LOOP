@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "src": "/media/gathering.webp",
+    "alt": "A community group gathered in a meeting space.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  },
+  "community": {
+    "src": "/media/community-stairs.webp",
+    "alt": "A group making heart shapes with their hands on a staircase.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  },
+  "youth": {
+    "src": "/media/learning.webp",
+    "alt": "A participant working at a laptop.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  },
+  "family": {
+    "src": "/media/community-group.webp",
+    "alt": "A group gathered together for a community photograph.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  },
+  "home": {
+    "src": "/media/conversation.webp",
+    "alt": "Participants listening during a group conversation.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  },
+  "connection": {
+    "src": "/media/workshop.webp",
+    "alt": "Participants working together around tables.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  },
+  "journey": {
+    "src": "/media/advocacy.webp",
+    "alt": "Four people standing together in a public building.",
+    "stock": false,
+    "credit": "Photo supplied by LOOP",
+    "position": "50% 45%"
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { PageIntro } from '@/components/page-intro';
 import { ButtonLink } from '@/components/ui';
+import { campIntro, campDetails } from '@/content/approved-copy';
 import { media } from '@/content/media';
 export const metadata: Metadata = {
   description:
@@ -13,9 +14,9 @@ export default function Camp() {
     <>
       <PageIntro
         eyebrow="Youth education & entrepreneurship"
-        title="Ideas today."
-        emphasis="Entrepreneurs tomorrow."
-        description="LOOP Summer Academic and Entrepreneurship Camp: a free six-week program for 20 youth, bringing academic enrichment, financial literacy, and real-world business experience together."
+        title="LOOP Summer Academic and Entrepreneurship Camp"
+        emphasis=""
+        description={campIntro}
         image={media.youth}
       />
       <div className="statement-band">
@@ -36,15 +37,11 @@ export default function Camp() {
         <p className="eyebrow">From idea to launch</p>
         <div>
           <h2 className="section-title">
-            Learn it.
+            Summer program
             <br />
-            <span className="text-clay">Build it. Make it yours.</span>
+            <span className="text-clay"></span>
           </h2>
-          <p>
-            Students strengthen academic skills while exploring what it takes to start and run a
-            business. Hands-on projects, educational field trips, and real-world business exposure
-            connect classroom learning to possibilities beyond it.
-          </p>
+          <p>{campDetails}</p>
           <ol className="camp-steps">
             {[
               ['Imagine', 'Develop a business idea and discover the people it could serve.'],
