@@ -69,8 +69,13 @@ function defaults(): SiteContent {
       contactEmail: process.env.CONTACT_EMAIL || 'info@loopcares.org',
       contactPhone: process.env.CONTACT_PHONE || '(323) 985-2116',
       donationUrl: safeHttpsUrl(process.env.DONATION_URL),
-      instagram: safeHttpsUrl(process.env.INSTAGRAM_URL),
-      facebook: safeHttpsUrl(process.env.FACEBOOK_URL),
+      instagram: safeHttpsUrl(
+        process.env.INSTAGRAM_URL || 'https://www.instagram.com/p/DUOBi2SFKN5/',
+      ),
+      facebook: safeHttpsUrl(
+        process.env.FACEBOOK_URL ||
+          'https://www.facebook.com/p/Liberation-Of-Oppressed-People-61595201775480/',
+      ),
       linkedin: safeHttpsUrl(process.env.LINKEDIN_URL),
     },
     programs,
@@ -130,8 +135,9 @@ export const getSiteContent = cache(async (): Promise<SiteContent> => {
       donationUrl: safeHttpsUrl(process.env.DONATION_URL || s.donationUrl),
       announcement: text(s, 'announcement'),
       privacyNotice: text(s, 'privacyNotice'),
-      instagram: safeHttpsUrl(process.env.INSTAGRAM_URL || s.instagram),
-      facebook: safeHttpsUrl(process.env.FACEBOOK_URL || s.facebook),
+      instagram:
+        safeHttpsUrl(process.env.INSTAGRAM_URL || s.instagram) || fallback.settings.instagram,
+      facebook: safeHttpsUrl(process.env.FACEBOOK_URL || s.facebook) || fallback.settings.facebook,
       linkedin: safeHttpsUrl(process.env.LINKEDIN_URL || s.linkedin),
     };
     const cmsPrograms: Program[] = rows(data.programs)
