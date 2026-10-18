@@ -47,7 +47,7 @@ export function Header({ announcement }: { announcement?: string }) {
       {announcement && <p className="bg-linen px-6 py-2 text-center text-xs">{announcement}</p>}
       <header ref={header} className="site-header">
         <div className="shell flex min-h-[98px] items-center justify-between gap-5">
-          <Link href="/" aria-label="LOOP — home">
+          <Link href="/" aria-label="LOOP home">
             <Logo />
           </Link>
           <nav aria-label="Main navigation" className="hidden items-center gap-6 xl:flex">
@@ -99,8 +99,8 @@ export function Header({ announcement }: { announcement?: string }) {
             )}
           </nav>
           <div className="flex items-center gap-3">
-            <Link href="/get-help" className="brand-button compact">
-              Get support ↗
+            <Link href="/donate" className="brand-button compact donate-nav">
+              Donate
             </Link>
             <button
               ref={trigger}
@@ -169,6 +169,9 @@ export function Header({ announcement }: { announcement?: string }) {
           ))}
         </nav>
         <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/donate" onClick={close} className="brand-button donate-nav">
+            Donate
+          </Link>
           <Link href="/get-help" onClick={close} className="brand-button">
             Get support
           </Link>

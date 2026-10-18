@@ -18,7 +18,9 @@ type Row = Record<string, unknown>;
 const record = (v: unknown): Row =>
   v !== null && typeof v === 'object' && !Array.isArray(v) ? (v as Row) : {};
 const text = (r: Row, k: string, fallback = ''): string =>
-  typeof r[k] === 'string' ? (r[k] as string).slice(0, 30000) : fallback;
+  typeof r[k] === 'string'
+    ? (r[k] as string).slice(0, 30000).replace(/[\u2013\u2014]/g, ' ')
+    : fallback;
 const rows = (v: unknown): Row[] => (Array.isArray(v) ? v.slice(0, 200).map(record) : []);
 const validSlug = (s: string) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s) && s.length <= 96;
 const validDate = (s: string) => Number.isFinite(Date.parse(s));
@@ -63,7 +65,7 @@ function defaults(): SiteContent {
         'LOOP helps youth, families, and justice-impacted people take their next step through housing support, reentry, education, and community resources.',
       heroImage: media.hero,
       aboutBody:
-        'LOOP — Liberation of Oppressed People — helps youth, families, and justice-impacted individuals overcome barriers through housing, reentry, education, transportation, employment, family support, and community resources.',
+        'LOOP Liberation of Oppressed People helps youth, families, and justice-impacted individuals overcome barriers through housing, reentry, education, transportation, employment, family support, and community resources.',
       serviceNote:
         'Program availability and service areas are confirmed individually. Sending a request does not guarantee services or reserve a place.',
       contactEmail: process.env.CONTACT_EMAIL || 'info@loopcares.org',

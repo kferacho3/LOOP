@@ -16,13 +16,13 @@ export default async function Initiatives() {
     <>
       <PageIntro
         eyebrow="Community initiatives"
-        title="Neighbors showing up."
-        emphasis="Change taking shape."
+        title="Community Initiatives"
+        emphasis=""
         description="Explore the drives, programs, and gatherings that turn collective care into practical support."
       />
       <CoatDrive />
       <section className="shell py-20">
-        <h2 className="section-title">More ways to connect.</h2>
+        <h2 className="section-title">Upcoming programs and events</h2>
         <p className="mt-6 mb-10 max-w-xl leading-7 text-muted">
           Explore upcoming gatherings and opportunities to get involved. Confirmed event details
           appear here as they become available.

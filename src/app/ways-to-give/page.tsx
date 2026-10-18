@@ -12,8 +12,8 @@ export default function Give() {
     <>
       <PageIntro
         eyebrow="Ways to give"
-        title="What you give"
-        emphasis="can open a door."
+        title="Ways to Give"
+        emphasis=""
         description="Time, resources, connections, and financial support all help create pathways forward for youth, families, and justice-impacted communities."
       />
       <section className="shell grid gap-6 pb-24 md:grid-cols-2">
@@ -28,7 +28,7 @@ export default function Give() {
             'Support the mission',
             'Help sustain youth programming, transportation, housing support, outreach, and essential community resources.',
             '/donate',
-            'Explore financial giving',
+            'Donate with PayPal',
           ],
           [
             'Share your time',
@@ -43,11 +43,16 @@ export default function Give() {
             'Partner with LOOP',
           ],
         ].map(([t, d, h, c], i) => (
-          <article key={t} className="border border-line bg-linen p-8 md:p-12">
+          <article
+            key={t}
+            className="giving-card flex h-full flex-col border border-line bg-linen p-8 md:p-12"
+          >
             <p className="eyebrow mb-8">0{i + 1} / Make a difference</p>
             <h2 className="text-3xl">{t}</h2>
             <p className="mt-5 mb-8 leading-8 text-muted">{d}</p>
-            <ButtonLink href={h}>{c}</ButtonLink>
+            <ButtonLink href={h} className="mt-auto self-start">
+              {c}
+            </ButtonLink>
           </article>
         ))}
       </section>

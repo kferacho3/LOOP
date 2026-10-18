@@ -1,5 +1,22 @@
 import type { Metadata } from 'next';
-import { PageIntro } from '@/components/page-intro';
-import { media } from '@/content/media';
-export const metadata:Metadata={title:'Photography & credits',robots:{index:false,follow:true}};
-export default function Credits(){return <><PageIntro eyebrow="Creative credits" title="A little transparency." emphasis="A lot of gratitude." description="The initial imagery is illustrative stock, not a representation of LOOP’s staff, clients, partners, properties, or completed projects. It does not imply that a pictured person has used LOOP’s services."/><section className="shell pb-24"><div className="max-w-3xl"><h2 className="text-2xl tracking-tight">Photography</h2><p className="mt-5 text-sm leading-7 text-muted">Photos from Pexels and Unsplash are used as editorial placeholders. Confirm the exact photographer and image permissions before a public launch; replace with permission-cleared LOOP photographs when available.</p><div className="mt-8 divide-y divide-line">{Object.entries(media).map(([key,image])=><div key={key} className="flex flex-wrap items-center justify-between gap-4 py-5"><span className="text-sm capitalize">{key}</span><a href={image.creditUrl||'https://www.pexels.com'} target="_blank" rel="noopener noreferrer" className="text-sm underline underline-offset-4">{image.credit||'Stock image source'}<span className="sr-only"> (opens in a new tab)</span></a></div>)}</div><h2 className="mt-14 text-2xl tracking-tight">Identity and motion</h2><p className="mt-5 text-sm leading-7 text-muted">The provisional LOOP identity is an original concept and is not an assertion of trademark clearance. Motion is implemented with GSAP, with icons from Lucide. Typography uses Manrope via Google Fonts. The interface remains fully readable without decorative animation.</p></div></section></>;}
+export const metadata: Metadata = {
+  title: 'Photography & credits',
+  robots: { index: false, follow: true },
+};
+export default function Credits() {
+  return (
+    <section className="shell page-editorial-intro pb-24">
+      <p className="eyebrow">Photography & credits</p>
+      <h1>Media and identity</h1>
+      <div className="body-copy mt-10 max-w-3xl space-y-6">
+        <p>
+          The photographs and community video on this website were supplied by LOOP. Images are
+          presented without identifying individuals or assigning them a role, service history, or
+          personal story.
+        </p>
+        <p>The chain symbol and One Warm Coat seal were supplied for use on the LOOP website.</p>
+        <p>Typography uses Manrope. Interface icons are from Lucide.</p>
+      </div>
+    </section>
+  );
+}

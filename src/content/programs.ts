@@ -1,15 +1,15 @@
 import type { Program } from '@/lib/types';
 import { media } from './media';
-/** Program scope comes from LOOP Website Brief, pages 2–3. Additional copy is proposed editorial language. */
+/** Program scope comes from LOOP Website Brief, pages 2 3. Descriptions reproduce the supplied program PDFs and website brief. */
 export const programs: Program[] = [
   {
     slug: 'court-community-support',
     title: 'Court & Family Support',
-    shortTitle: 'Someone in your corner.',
+    shortTitle: 'Court & Community Support',
     category: 'Guidance & connection',
     summary:
-      'Court accompaniment, courthouse outreach, and resource navigation for individuals and families navigating the justice system.',
-    body: 'Finding your way through the justice system can bring unfamiliar questions and practical barriers. LOOP’s Court & Community Support program centers accompaniment, community outreach, and connections to resources. This is community support, not legal representation.',
+      'Providing court accompaniment, courthouse outreach, resource navigation, community outreach, and support for individuals and families navigating the justice system.',
+    body: 'LOOP supports individuals and families navigating the justice system by providing court support, access to resources, and community based assistance throughout challenging legal processes.',
     includes: [
       'Court accompaniment',
       'Courthouse and community outreach',
@@ -23,11 +23,11 @@ export const programs: Program[] = [
   {
     slug: 'visitation-transportation',
     title: 'Visitation Transportation',
-    shortTitle: 'Keep your connection.',
+    shortTitle: 'Visitation Transportation',
     category: 'Family & connection',
     summary:
       'Helping reduce transportation barriers for families visiting incarcerated loved ones at prisons and county jails.',
-    body: 'Distance should not be the only thing that determines whether a family can stay connected. This program focuses on reducing practical transportation barriers around visits to incarcerated loved ones. Ask about available options; a request does not reserve a trip or confirm a facility visit.',
+    body: 'LOOP provides transportation to prisons and county jails, helping families overcome travel barriers and stay connected with their incarcerated loved ones through in person visits.',
     includes: [
       'Transportation resource navigation',
       'Support planning a family visit',
@@ -41,11 +41,11 @@ export const programs: Program[] = [
   {
     slug: 'housing-support-stability',
     title: 'Housing Support & Stability',
-    shortTitle: 'Room to begin again.',
+    shortTitle: 'Housing Support & Stability',
     category: 'Housing & stability',
     summary:
-      'Working to expand access to safe, stable housing through supportive services, resource navigation, and connections that promote long-term independence.',
-    body: 'A stable place to live can create space for everything that comes next. LOOP helps people navigate housing resources and explore referrals and support options. Housing placement, eligibility, availability, and financial assistance must be confirmed with the relevant program or provider.',
+      'Helping individuals and families overcome housing barriers through resource navigation, transitional housing support, housing referrals, and connections to safe and stable housing opportunities.',
+    body: 'LOOP is working to expand access to safe and stable housing for individuals and families facing housing barriers, with supportive services designed to promote long term stability and independence.',
     includes: [
       'Housing resource navigation',
       'Transitional housing support',
@@ -59,11 +59,11 @@ export const programs: Program[] = [
   {
     slug: 'reentry-support',
     title: 'Reentry Support',
-    shortTitle: 'A next chapter. Together.',
+    shortTitle: 'Reentry Support',
     category: 'Housing & stability',
     summary:
-      'Employment, transportation, resources, and referrals to help justice-impacted individuals rebuild stability.',
-    body: 'Returning to a community involves more than a single step. LOOP connects justice-impacted individuals with practical resources across employment, transportation, referrals, and other supports needed to rebuild stability. Your request can begin with the area that matters most to you.',
+      'Connecting justice-impacted individuals with employment, transportation, resources, referrals, and other services needed to rebuild stability.',
+    body: 'LOOP supports individuals returning home after incarceration by connecting them with resources, services and opportunities that promote stability, independence, and successful reintegration into the community.',
     includes: [
       'Employment resource connections',
       'Transportation resources',
@@ -77,11 +77,11 @@ export const programs: Program[] = [
   {
     slug: 'youth-entrepreneurship-education',
     title: 'Youth Entrepreneurship & Education',
-    shortTitle: 'Big ideas start here.',
+    shortTitle: 'Youth Entrepreneurship & Education',
     category: 'Youth & opportunity',
     summary:
-      'Hands-on learning in entrepreneurship, financial literacy, leadership, teamwork, and career possibilities for middle and high school students.',
-    body: 'Young people deserve room to imagine what they can build. LOOP’s youth programming introduces middle and high school students to entrepreneurship, business development, financial literacy, leadership, teamwork, and possible career paths. Enrollment dates and program locations will be shared when confirmed.',
+      'Hands-on programs that introduce middle and high school students to entrepreneurship, financial literacy, business development, leadership, teamwork, and career possibilities.',
+    body: 'LOOP empowers middle and high school youth with entrepreneurial education, financial literacy, and hands on experience. Through our programs and camps, youth learn how to turn ideas into real businesses and build brighter futures.',
     includes: [
       'Academic enrichment and mentorship',
       'Entrepreneurship and business development',
@@ -97,11 +97,11 @@ export const programs: Program[] = [
   {
     slug: 'family-support',
     title: 'Family Support',
-    shortTitle: 'Stronger, side by side.',
+    shortTitle: 'Family Support',
     category: 'Family & connection',
     summary:
-      'Resources, referrals, events, transportation, and community-based support for families impacted by incarceration and the justice system.',
-    body: 'When a loved one is navigating the justice system, the effects often reach the whole family. LOOP brings together practical resources, referrals, transportation connections, events, and community-based support. Share only the broad kind of support you are looking for.',
+      'Supporting families impacted by incarceration and the justice system through resources, referrals, events, transportation, and community-based support.',
+    body: 'Supporting families impacted by incarceration and the justice system through resources, referrals, events, transportation, and community-based support.',
     includes: [
       'Family resource connections',
       'Referrals and navigation',
@@ -115,11 +115,11 @@ export const programs: Program[] = [
   {
     slug: 'community-outreach-events',
     title: 'Community Outreach & Events',
-    shortTitle: 'Good things happen together.',
+    shortTitle: 'Community Outreach & Events',
     category: 'Guidance & connection',
     summary:
-      'Resource events, care markets, youth forums, outreach campaigns, volunteer projects, and other grassroots initiatives.',
-    body: 'Community grows through showing up for one another. LOOP’s outreach program includes resource events, care markets, youth forums, volunteer projects, and grassroots initiatives. Explore the LOOP Community Coat Drive and other opportunities on our Community Initiatives page.',
+      'Community resource events, care markets, youth forums, outreach campaigns, volunteer projects, and other grassroots initiatives.',
+    body: 'Community resource events, care markets, youth forums, outreach campaigns, volunteer projects, and other grassroots initiatives.',
     includes: [
       'Community resource events and care markets',
       'Youth forums',
