@@ -1,8 +1,106 @@
 import type { Metadata } from 'next';
 import { PageIntro } from '@/components/page-intro';
-import { SectionHeading,Eyebrow,ButtonLink,ClosingCTA,Flower } from '@/components/ui';
-import { Photo } from '@/components/photo';
+import { ClosingCTA, TextLink } from '@/components/ui';
 import { media } from '@/content/media';
-import { getSiteContent } from '@/lib/content';
-export const metadata:Metadata={title:'About LOOP',alternates:{canonical:'/about'}};
-export default async function About(){const {settings}=await getSiteContent();return <><PageIntro eyebrow="Our purpose" title="People. Possibility." emphasis="A shared future." description={settings.aboutBody} image={media.hero}/><section className="border-y border-line bg-linen/50 py-20"><div className="shell grid gap-10 md:grid-cols-[.7fr_1.3fr]"><Eyebrow>Why LOOP exists</Eyebrow><div><h2 className="section-title">A barrier shouldn’t<br/>define <span className="text-clay">a future.</span></h2><p className="mt-8 max-w-2xl text-base leading-8 text-muted">Housing. A ride. The next opportunity. A familiar face when things feel unfamiliar. Everyday barriers can put important possibilities out of reach. LOOP exists to help youth, families, and justice-impacted individuals navigate those barriers and connect with practical support.</p><p className="mt-6 max-w-2xl text-base leading-8 text-muted">Our work brings together housing, reentry, education, transportation, employment, family support, and community resources — with people at the center.</p></div></div></section><section className="shell py-20 md:py-28"><SectionHeading eyebrow="What guides us" title="Three values." emphasis="One way of showing up."/><div className="mt-14 grid gap-6 md:grid-cols-3">{[['01','Community','Progress belongs to all of us. We begin with connection, shared responsibility, and the people who make a community.'],['02','Access','Possibility should be within reach. We work to reduce practical barriers and help people find their next step.'],['03','Empowerment','People deserve agency in their own lives. Our role is to support their choices with resources, connections, and opportunity.']].map(([n,t,d])=><article className="rounded-2xl border border-line p-7 md:p-9" key={n} data-reveal><div className="mb-14 flex items-center justify-between"><span className="text-xs text-muted">{n}</span><Flower className="size-10 text-clay"/></div><h3 className="text-3xl tracking-tight">{t}</h3><p className="mt-5 text-sm leading-7 text-muted">{d}</p></article>)}</div></section><section className="shell grid gap-12 pb-24 lg:grid-cols-2"><Photo image={media.community} caption className="min-h-[360px] rounded-[28px]"/><div className="self-center"><SectionHeading eyebrow="Rooted in people. Built to grow." title="Community by community." emphasis="Connection by connection." description="LOOP’s vision makes room for programs in more communities and states over time. Growth means building meaningful local connections, not promising services before they are ready."/><p className="mt-6 text-sm leading-7 text-muted">{settings.serviceNote}</p><ButtonLink href="/partner" className="mt-8">Build with us</ButtonLink></div></section><ClosingCTA/></>;}
+export const metadata: Metadata = {
+  description:
+    'Discover LOOP’s nonprofit mission, lived-experience roots, and values of community, access, and empowerment for youth, families, and justice-impacted people.',
+  title: 'Our Story & Mission',
+  alternates: { canonical: '/about' },
+};
+export default function About() {
+  return (
+    <>
+      <PageIntro
+        eyebrow="About LOOP"
+        title="Built from experience."
+        emphasis="Moving forward, together."
+        description="Rooted in community. Committed to creating pathways forward for youth, families, and justice-impacted people."
+        image={media.hero}
+      />
+      <section id="mission" className="statement-band">
+        <div className="shell py-20">
+          <p className="eyebrow mb-6">Our mission</p>
+          <h2>To turn barriers into pathways—and possibility into lasting progress.</h2>
+          <p>
+            LOOP equips youth, families, and justice-impacted communities with education, pathways
+            to stable housing, essential resources, and meaningful opportunities. By bringing
+            practical support and community connection together, we help people build independence,
+            strengthen their families, and shape their own futures.
+          </p>
+        </div>
+      </section>
+      <section className="shell editorial-section">
+        <p className="eyebrow">Our story</p>
+        <div>
+          <h2 className="section-title">
+            Lived experience.
+            <br />
+            <span className="text-clay">A shared purpose.</span>
+          </h2>
+          <p>
+            LOOP was created from lived experience and a firsthand understanding of the barriers
+            people face when navigating complex systems. We know that a challenge rarely arrives
+            alone: housing, education, transportation, and family connection are deeply intertwined.
+          </p>
+          <p>
+            That understanding shaped a vision for an organization that meets people with dignity,
+            responds to real needs, and creates meaningful opportunities. Our work turns community
+            needs into action—and action into pathways forward.
+          </p>
+          <TextLink href="/about/people" className="mt-6">
+            People behind the purpose
+          </TextLink>
+        </div>
+      </section>
+      <section id="approach" className="bg-linen">
+        <div className="shell editorial-section">
+          <p className="eyebrow">Our approach</p>
+          <div>
+            <h2 className="section-title">
+              Listen first.
+              <br />
+              <span className="text-clay">Build together.</span>
+            </h2>
+            <p>
+              Lasting change begins by listening to the people closest to the challenges. LOOP
+              centers dignity, connection, and opportunity, working alongside individuals, families,
+              and community partners to create practical solutions.
+            </p>
+            <p>
+              We connect immediate needs with longer-term possibilities: a resource that brings
+              stability, a relationship that offers encouragement, or an opportunity that opens a
+              new direction. People remain the authors of their own futures.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="values" className="shell py-20 md:py-28">
+        <p className="eyebrow mb-6">Our values</p>
+        <div className="values-grid">
+          {[
+            [
+              'Community',
+              'We build through connection, collaboration, and collective care. Strong communities grow when people show up for one another.',
+            ],
+            [
+              'Access',
+              'We work to reduce barriers so education, essential resources, and meaningful opportunities are within reach.',
+            ],
+            [
+              'Empowerment',
+              'We equip people with the tools, knowledge, and support to make their own choices and shape their own futures.',
+            ],
+          ].map(([t, d], i) => (
+            <article key={t}>
+              <span className="eyebrow">0{i + 1}</span>
+              <h2>{t}</h2>
+              <p>{d}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <ClosingCTA />
+    </>
+  );
+}

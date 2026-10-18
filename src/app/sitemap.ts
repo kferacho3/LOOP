@@ -1,3 +1,30 @@
 import type { MetadataRoute } from 'next';
-import { getSiteContent,getSiteUrl,isIndexingEnabled } from '@/lib/content';
-export default async function sitemap():Promise<MetadataRoute.Sitemap>{if(!isIndexingEnabled())return [];const {programs,events,stories,locations}=await getSiteContent();const base=getSiteUrl();return ['','/about','/programs','/events','/volunteer','/partner','/donate','/contact','/impact','/locations','/accessibility',...programs.map(p=>`/programs/${p.slug}`),...events.map(e=>`/events/${e.slug}`),...stories.map(s=>`/stories/${s.slug}`),...locations.map(l=>`/locations/${l.slug}`)].map(p=>({url:base+p,changeFrequency:'weekly',priority:p===''?1:.7}));}
+import { getSiteContent, getSiteUrl, isIndexingEnabled } from '@/lib/content';
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (!isIndexingEnabled()) return [];
+  const { programs, events, stories, locations } = await getSiteContent();
+  const base = getSiteUrl();
+  return [
+    '',
+    '/about',
+    '/programs',
+    '/community-initiatives',
+    '/community-initiatives/coat-drive',
+    '/programs/summer-camp',
+    '/about/people',
+    '/stories',
+    '/ways-to-give',
+    '/careers',
+    '/volunteer',
+    '/partner',
+    '/donate',
+    '/contact',
+    '/impact',
+    '/locations',
+    '/accessibility',
+    ...programs.map((p) => `/programs/${p.slug}`),
+    ...events.map((e) => `/events/${e.slug}`),
+    ...stories.map((s) => `/stories/${s.slug}`),
+    ...locations.map((l) => `/locations/${l.slug}`),
+  ].map((p) => ({ url: base + p, changeFrequency: 'weekly', priority: p === '' ? 1 : 0.7 }));
+}

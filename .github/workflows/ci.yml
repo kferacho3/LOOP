@@ -11,9 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      # Initial package has no fabricated lockfile. Commit the first successful
-      # npm install lockfile, then replace this with npm ci + setup-node caching.
-      - run: npm install
+      - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
@@ -25,3 +23,4 @@ jobs:
           name: browser-report
           path: playwright-report/
           retention-days: 7
+
