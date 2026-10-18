@@ -35,7 +35,7 @@ export function Header({ announcement }: { announcement?: string }) {
         <div className="shell flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3">
           <Link href="/community-initiatives/coat-drive">
             Give warmth. Share hope.{' '}
-            <span className="underline underline-offset-4">Join our coat drive ↗</span>
+            <span className="underline underline-offset-4">Join our coat drive</span>
           </Link>
           <div className="flex gap-6">
             <Link href="/volunteer">Volunteer</Link>

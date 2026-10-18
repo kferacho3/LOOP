@@ -66,7 +66,7 @@ export function BrandPreview() {
       </fieldset>
       <div className="mt-8 flex flex-wrap gap-4">
         <a href={`/?theme=${selected}`} className="brand-button">
-          Preview the homepage ↗
+          Preview the homepage
         </a>
         <button
           className="brand-button secondary"
