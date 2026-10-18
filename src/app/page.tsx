@@ -21,7 +21,7 @@ export default async function Home() {
         ].map(([h, t]) => (
           <Link href={h} key={h}>
             {t}
-            <span aria-hidden>↗</span>
+            
           </Link>
         ))}
       </nav>
@@ -59,7 +59,7 @@ export default async function Home() {
                 <h3>{p.title}</h3>
                 <p>{p.summary}</p>
                 <span className="program-more">
-                  Program details <span aria-hidden>↗</span>
+                  Program details 
                 </span>
               </div>
             </Link>
