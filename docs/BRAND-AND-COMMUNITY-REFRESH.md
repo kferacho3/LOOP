@@ -1,7 +1,7 @@
 # LOOP community brand refresh
 
 ## Editing the brand
-Open `/brand-preview` (also linked in the footer). Four coordinated palettes apply to all pages, persist in this browser, and can be shared with `?theme=plum|forest|indigo|earth`. Reset restores the published default. Update `DEFAULT_PALETTE` in `src/content/brand.ts` to publish a new default; semantic color values live in `src/app/globals.css`.
+Open `/brand-preview` (also linked in the footer). Four coordinated palettes apply to all pages, persist in this browser, and can be shared with `?theme=plum|forest|indigo|earth`. Reset restores the published default. Update `DEFAULT_PALETTE` in `src/content/brand.ts` to publish a new default; semantic color values live in `src/app/brand.css`.
 
 ## Content
 Homepage: coat drive first, short nonprofit mission, programs, summer camp, involvement.

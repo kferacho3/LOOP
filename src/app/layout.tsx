@@ -7,7 +7,7 @@ import { SiteAnalytics } from '@/components/analytics';
 import { getSiteContent, getSiteUrl, formsReady, isIndexingEnabled } from '@/lib/content';
 import { BrandTheme } from '@/components/brand-preview';
 import { DEFAULT_PALETTE } from '@/content/brand';
-import './globals.css';
+import './brand.css';
 const body = Manrope({ subsets: ['latin'], display: 'swap', variable: '--font-body' });
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#f6f3ec' };
 export const metadata: Metadata = {

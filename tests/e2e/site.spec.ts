@@ -110,5 +110,5 @@ test('brand palette persists through navigation and reset', async ({ page }) => 
   await expect(page.locator('html')).toHaveAttribute('data-palette', 'forest');
   await page.goto('/brand-preview');
   await page.getByRole('button', { name: 'Reset to default' }).click();
-  await expect(page.locator('html')).toHaveAttribute('data-palette', 'plum');
+  await expect(page.locator('html')).toHaveAttribute('data-palette', 'earth');
 });

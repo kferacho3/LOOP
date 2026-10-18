@@ -1,5 +1,5 @@
 /** Change DEFAULT_PALETTE to publish a palette for everyone. Preview choices stay in this browser. */
-export const DEFAULT_PALETTE = 'plum';
+export const DEFAULT_PALETTE = 'earth';
 export const palettes = [
   {
     id: 'plum',
@@ -22,8 +22,8 @@ export const palettes = [
   {
     id: 'earth',
     name: 'Common ground',
-    description: 'Burgundy, terracotta, and natural linen.',
-    colors: ['#4e2428', '#edb784', '#faf1e7', '#95452e'],
+    description: 'Warm beige, deep brown, and burgundy.',
+    colors: ['#422f2b', '#d8bfa3', '#f7f1e8', '#733641'],
   },
 ] as const;
 export type PaletteId = (typeof palettes)[number]['id'];

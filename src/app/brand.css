@@ -207,7 +207,6 @@ html[data-motion='calm'] .route-enter {
 }
 
 /* Semantic brand tokens: every existing Tailwind color follows the selected palette. */
-:root,
 [data-palette='plum'] {
   --brand-primary: #342139;
   --brand-gold: #f0bd51;
@@ -215,7 +214,7 @@ html[data-motion='calm'] .route-enter {
   --brand-soft: #efe5dc;
   --brand-ink: #302533;
   --brand-accent: #923c51;
-  --brand-muted: #665961;
+  --brand-muted: #544750;
   --brand-line: #d9cbd1;
 }
 [data-palette='forest'] {
@@ -238,14 +237,15 @@ html[data-motion='calm'] .route-enter {
   --brand-muted: #5c6070;
   --brand-line: #d2d3df;
 }
+:root,
 [data-palette='earth'] {
-  --brand-primary: #4e2428;
-  --brand-gold: #edb784;
-  --brand-surface: #faf1e7;
+  --brand-primary: #422f2b;
+  --brand-gold: #d8bfa3;
+  --brand-surface: #f7f1e8;
   --brand-soft: #efe0d4;
   --brand-ink: #3e2927;
-  --brand-accent: #95452e;
-  --brand-muted: #70564e;
+  --brand-accent: #733641;
+  --brand-muted: #51413c;
   --brand-line: #dbc7bd;
 }
 .skip-link {
