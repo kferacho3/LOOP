@@ -104,6 +104,7 @@ test('brand palette persists through navigation and reset', async ({ page }) => 
   await page.goto('/brand-preview');
   await page.getByRole('radio', { name: 'Rooted together' }).check();
   await expect(page.locator('html')).toHaveAttribute('data-palette', 'forest');
+  await expect(page.locator('html')).toHaveCSS('--brand-primary', '#173e35');
   await page.getByRole('link', { name: 'Preview the homepage' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-palette', 'forest');
   await page.reload();

@@ -237,7 +237,7 @@ html[data-motion='calm'] .route-enter {
   --brand-muted: #5c6070;
   --brand-line: #d2d3df;
 }
-:root,
+:root:not([data-palette]),
 [data-palette='earth'] {
   --brand-primary: #422f2b;
   --brand-gold: #d8bfa3;

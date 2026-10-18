@@ -12,9 +12,9 @@ export default function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: '#fbf5e9',
+          background: '#f7f1e8',
           padding: 70,
-          color: '#342139',
+          color: '#422f2b',
         }}
       >
         <div style={{ fontSize: 34, fontWeight: 700, letterSpacing: -2 }}>LOOP</div>
@@ -28,7 +28,7 @@ export default function Image() {
           }}
         >
           <div>Community.</div>
-          <div style={{ color: '#923c51' }}>Possibility.</div>
+          <div style={{ color: '#733641' }}>Possibility.</div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 20 }}>
           <div>Liberation of Oppressed People</div>
