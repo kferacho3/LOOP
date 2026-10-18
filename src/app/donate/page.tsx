@@ -48,7 +48,7 @@ export default async function Donate() {
           </TextLink>
         </div>
         <div
-          className="relative overflow-hidden rounded-[32px] bg-forest p-8 text-paper md:p-12"
+          className="order-first relative overflow-hidden rounded-[32px] bg-forest p-8 text-paper md:p-12 lg:order-last"
           data-dark
         >
           
