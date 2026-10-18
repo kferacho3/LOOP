@@ -1059,3 +1059,6 @@ html[data-motion='calm'] .route-enter {
   .site-header .donate-nav { min-width: 82px; padding-inline: 14px; }
   .site-header .h-14 { width: 42px; height: 42px; }
 }
+
+.camp-editorial .grid > * { min-width: 0; }
+.section-title { overflow-wrap: anywhere; }
