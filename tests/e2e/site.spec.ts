@@ -78,7 +78,9 @@ test('unknown event and program return not-found', async ({ page }) => {
 
 test('coat drive, sponsor, and new nonprofit pages are available', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('LOOP Community Coat Drive');
+  await expect(
+    page.getByRole('heading', { level: 2, name: 'LOOP Community Coat Drive' }),
+  ).toBeVisible();
   await expect(
     page.getByRole('img', { name: 'One Warm Coat Official Member of Nonprofit Network' }),
   ).toBeVisible();
@@ -100,6 +102,43 @@ test('coat drive, sponsor, and new nonprofit pages are available', async ({ page
     );
   }
 });
+
+test('homepage photo journal keeps the photo, heading, and action in sync', async ({ page }) => {
+  await page.goto('/');
+  const hero = page.getByRole('region', { name: 'The LOOP photo journal' });
+  const first = hero.getByRole('button', { name: /^Photo 1 of 8:/ });
+  const last = hero.getByRole('button', { name: /^Photo 8 of 8:/ });
+  const next = hero.getByRole('button', { name: 'Next photo' });
+  await expect(
+    hero.getByRole('heading', { level: 1, name: 'Possibility, within reach.' }),
+  ).toBeVisible();
+  await expect(first).toHaveAttribute('aria-current', 'true');
+
+  await next.click();
+  await expect(hero.getByRole('heading', { name: 'Showing up together.' })).toBeVisible();
+  await expect(hero.getByRole('img', { name: /steps as they light up blue/ })).toBeVisible();
+  await expect(hero.getByRole('link', { name: 'Explore initiatives' })).toHaveAttribute(
+    'href',
+    '/community-initiatives',
+  );
+
+  const camp = hero.getByRole('button', { name: /^Photo 5 of 8:/ });
+  await camp.click();
+  await expect(hero.getByRole('link', { name: 'Explore summer camp' })).toHaveAttribute(
+    'href',
+    '/programs/summer-camp',
+  );
+  await camp.press('End');
+  await expect(last).toBeFocused();
+  await expect(last).toHaveAttribute('aria-current', 'true');
+  await expect(hero.getByRole('img', { name: /steps lit in red and blue/ })).toBeVisible();
+  await expect(hero.getByRole('img')).toHaveCount(1);
+
+  await next.click();
+  await expect(first).toHaveAttribute('aria-current', 'true');
+  await expect(hero.getByRole('img', { name: /Intuit Dome/ })).toBeVisible();
+});
+
 test('brand palette persists through navigation and reset', async ({ page }) => {
   await page.goto('/brand-preview');
   await page.getByRole('radio', { name: 'Rooted together' }).check();

@@ -3,21 +3,19 @@ import Link from 'next/link';
 import { Photo } from './photo';
 import photos from '@/content/community-media.json';
 import { coatDrive } from '@/content/approved-copy';
-export function CoatDrive({ hero = false }: { hero?: boolean }) {
-  const Heading = hero ? 'h1' : 'h2';
+export function CoatDrive() {
   return (
-    <section className="campaign-hero" aria-labelledby={hero ? 'home-title' : 'coat-title'}>
+    <section className="campaign-hero" aria-labelledby="coat-title">
       <div className="campaign-photo">
         <Photo
           image={photos['community-stairs']}
-          priority={hero}
           className="h-full min-h-[420px]"
           sizes="(max-width: 900px) 100vw, 55vw"
         />
       </div>
       <div className="campaign-copy">
         <p className="eyebrow">Community Initiatives</p>
-        <Heading id={hero ? 'home-title' : 'coat-title'}>{coatDrive.title}</Heading>
+        <h2 id="coat-title">{coatDrive.title}</h2>
         <p className="campaign-subtitle">{coatDrive.subtitle}</p>
         <p className="campaign-description">{coatDrive.introduction}</p>
         <div className="mt-8 flex flex-wrap gap-3">

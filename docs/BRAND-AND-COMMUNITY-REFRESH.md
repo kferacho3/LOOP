@@ -4,7 +4,7 @@
 Open `/brand-preview` (also linked in the footer). Four coordinated palettes apply to all pages, persist in this browser, and can be shared with `?theme=plum|forest|indigo|earth`. Reset restores the published default. Update `DEFAULT_PALETTE` in `src/content/brand.ts` to publish a new default; semantic color values live in `src/app/brand.css`.
 
 ## Content
-Homepage: coat drive first, short nonprofit mission, programs, summer camp, involvement.
+Homepage: eight-photo community journal first, followed by the coat drive, short nonprofit mission, programs, summer camp, and involvement. The carousel’s photos, crops, and supporting slides are defined in `src/content/home-hero.ts`.
 About: full mission, lived-experience story, approach, Community / Access / Empowerment.
 Community Initiatives: coat drive plus the existing published CMS event listing. Existing `/events` redirects permanently; event detail URLs remain intact.
 New pages: People Behind LOOP, Community Voices (uses consent-approved CMS stories), Ways to Give, Careers, Summer Camp. No invented staff, vacancies, testimonials, schedules, addresses, impact totals, or tax claims.

@@ -1,17 +1,20 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CoatDrive } from '@/components/coat-drive';
+import { HomeHero } from '@/components/home-hero';
 import { Photo } from '@/components/photo';
 import { ButtonLink, ClosingCTA, TextLink } from '@/components/ui';
 import { getSiteContent } from '@/lib/content';
 import photos from '@/content/community-media.json';
 import { introduction, mission, campIntro, campDetails } from '@/content/approved-copy';
+import { getHomeHeroSlides } from '@/content/home-hero';
 export const metadata: Metadata = { alternates: { canonical: '/' }, description: introduction };
 export default async function Home() {
-  const { programs } = await getSiteContent();
+  const { programs, settings } = await getSiteContent();
   return (
     <>
-      <CoatDrive hero />
+      <HomeHero slides={getHomeHeroSlides(settings)} />
+      <CoatDrive />
       <nav className="home-actions shell" aria-label="Get involved with LOOP">
         {[
           ['/get-help', 'Get Support'],
