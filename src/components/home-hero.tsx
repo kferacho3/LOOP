@@ -193,7 +193,7 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
           </div>
         </div>
 
-        <figure className={styles.frame}>
+        <figure className={styles.frame} aria-describedby="home-hero-event-caption">
           <div
             id="home-hero-photo"
             className={styles.stage}
@@ -219,7 +219,7 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
           <figcaption className={styles.caption}>
             <span>
               <LoopMark className={styles.mark} />
-              The LOOP photo journal
+              LOOP Youth Experience | LA Clippers
             </span>
             <span className={styles.count} aria-hidden>
               {ordinal(active + 1)} <span>/</span> {ordinal(count)}
@@ -272,6 +272,11 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
             <ArrowRight size={18} aria-hidden />
           </button>
         </div>
+        <p id="home-hero-event-caption" className={styles.captionNote}>
+          Through community partnerships, LOOP brought youth together for an evening of basketball,
+          connection, and fun at the Intuit Dome. A special thank you to the LA Clippers and Islah
+          Academy for helping make this experience possible.
+        </p>
       </div>
       <p role="status" className="sr-only">
         Photo {active + 1} of {count}: {current.title} {current.emphasis}

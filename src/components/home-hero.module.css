@@ -170,6 +170,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.015em;
+  text-transform: none;
 }
 
 .mark {
@@ -186,6 +189,15 @@
 
 .count > span {
   margin-inline: 2px;
+}
+
+.captionNote {
+  max-width: 65ch;
+  margin-inline: auto;
+  color: var(--brand-muted);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  text-align: center;
 }
 
 .controls {
@@ -300,6 +312,12 @@
   transition: none;
 }
 
+@media (max-width: 360px) {
+  .mark {
+    display: none;
+  }
+}
+
 @media (min-width: 800px) {
   .layout {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -314,7 +332,8 @@
     font-size: clamp(2.65rem, 5.15vw, 5.25rem);
   }
 
-  .controls {
+  .controls,
+  .captionNote {
     grid-column: 2;
   }
 }
