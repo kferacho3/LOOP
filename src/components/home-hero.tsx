@@ -192,12 +192,12 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
           </div>
         </div>
 
-        <figure
-          className={styles.gallery}
-          aria-labelledby="home-hero-event-title"
-          aria-describedby="home-hero-event-caption"
-        >
-          <div className={styles.frame}>
+        <div className={styles.gallery}>
+          <figure
+            className={styles.frame}
+            aria-labelledby="home-hero-event-title"
+            aria-describedby="home-hero-event-caption"
+          >
             <div
               id="home-hero-photo"
               className={styles.stage}
@@ -223,7 +223,15 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
                 {ordinal(active + 1)} / {ordinal(count)}
               </span>
             </div>
-          </div>
+            <figcaption className={styles.caption}>
+              <strong id="home-hero-event-title">LOOP Youth Experience | LA Clippers</strong>
+              <p id="home-hero-event-caption">
+                Through community partnerships, LOOP brought youth together for an evening of
+                basketball, connection, and fun at the Intuit Dome. A special thank you to the LA
+                Clippers and Islah Academy for helping make this experience possible.
+              </p>
+            </figcaption>
+          </figure>
 
           <div
             className={styles.controls}
@@ -270,16 +278,7 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
               <ArrowRight size={18} aria-hidden />
             </button>
           </div>
-
-          <figcaption className={styles.caption}>
-            <strong id="home-hero-event-title">LOOP Youth Experience | LA Clippers</strong>
-            <p id="home-hero-event-caption">
-              Through community partnerships, LOOP brought youth together for an evening of
-              basketball, connection, and fun at the Intuit Dome. A special thank you to the LA
-              Clippers and Islah Academy for helping make this experience possible.
-            </p>
-          </figcaption>
-        </figure>
+        </div>
       </div>
       <p role="status" className="sr-only">
         Photo {active + 1} of {count}: {current.title} {current.emphasis}
