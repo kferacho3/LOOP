@@ -12,7 +12,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import type { HeroSlide } from '@/content/home-hero';
-import { LoopMark } from './logo';
 import { TextLink } from './ui';
 import styles from './home-hero.module.css';
 
@@ -193,90 +192,94 @@ export function HomeHero({ slides }: { slides: HeroSlide[] }) {
           </div>
         </div>
 
-        <figure className={styles.frame} aria-describedby="home-hero-event-caption">
-          <div
-            id="home-hero-photo"
-            className={styles.stage}
-            onTouchStart={(event) => {
-              touchStart.current = event.touches.length === 1 ? event.touches[0] : null;
-            }}
-            onTouchEnd={handleSwipe}
-            onTouchCancel={() => {
-              touchStart.current = null;
-            }}
-          >
-            {photoIndexes.map((index) => (
-              <JournalPhoto
-                key={slides[index].photo.src}
-                slide={slides[index]}
-                state={index === active ? 'active' : index === previous ? 'previous' : 'pending'}
-                lead={index === 0}
-                fade={index === active && previous !== null}
-                onReady={() => showLoadedPhoto(index)}
-              />
-            ))}
-          </div>
-          <figcaption className={styles.caption}>
-            <span>
-              <LoopMark className={styles.mark} />
-              LOOP Youth Experience | LA Clippers
-            </span>
-            <span className={styles.count} aria-hidden>
-              {ordinal(active + 1)} <span>/</span> {ordinal(count)}
-            </span>
-          </figcaption>
-        </figure>
-
-        <div
-          className={styles.controls}
-          role="group"
-          aria-label="Photo controls"
-          onKeyDown={handleKeys}
+        <figure
+          className={styles.gallery}
+          aria-labelledby="home-hero-event-title"
+          aria-describedby="home-hero-event-caption"
         >
-          <button
-            type="button"
-            className={styles.arrow}
-            aria-label="Previous photo"
-            onClick={() => step(-1)}
-          >
-            <ArrowLeft size={18} aria-hidden />
-          </button>
-          <div ref={dots} className={styles.dots} style={dotWindow}>
-            <div className={styles.dotTrack}>
-              {slides.map((slide, index) => (
-                <button
-                  key={slide.photo.src}
-                  ref={index === active ? activeDot : undefined}
-                  type="button"
-                  className={styles.dot}
-                  data-edge={
-                    (index === firstDot && firstDot > 0) ||
-                    (index === lastDot && lastDot < count - 1) ||
-                    undefined
-                  }
-                  aria-label={`Photo ${index + 1} of ${count}: ${slide.label}`}
-                  aria-controls="home-hero-story home-hero-photo"
-                  aria-current={index === active ? 'true' : undefined}
-                  tabIndex={index >= firstDot && index <= lastDot ? undefined : -1}
-                  onClick={() => selectPhoto(index)}
+          <div className={styles.frame}>
+            <div
+              id="home-hero-photo"
+              className={styles.stage}
+              onTouchStart={(event) => {
+                touchStart.current = event.touches.length === 1 ? event.touches[0] : null;
+              }}
+              onTouchEnd={handleSwipe}
+              onTouchCancel={() => {
+                touchStart.current = null;
+              }}
+            >
+              {photoIndexes.map((index) => (
+                <JournalPhoto
+                  key={slides[index].photo.src}
+                  slide={slides[index]}
+                  state={index === active ? 'active' : index === previous ? 'previous' : 'pending'}
+                  lead={index === 0}
+                  fade={index === active && previous !== null}
+                  onReady={() => showLoadedPhoto(index)}
                 />
               ))}
+              <span className={styles.count} aria-hidden>
+                {ordinal(active + 1)} / {ordinal(count)}
+              </span>
             </div>
           </div>
-          <button
-            type="button"
-            className={styles.arrow}
-            aria-label="Next photo"
-            onClick={() => step(1)}
+
+          <div
+            className={styles.controls}
+            role="group"
+            aria-label="Photo controls"
+            onKeyDown={handleKeys}
           >
-            <ArrowRight size={18} aria-hidden />
-          </button>
-        </div>
-        <p id="home-hero-event-caption" className={styles.captionNote}>
-          Through community partnerships, LOOP brought youth together for an evening of basketball,
-          connection, and fun at the Intuit Dome. A special thank you to the LA Clippers and Islah
-          Academy for helping make this experience possible.
-        </p>
+            <button
+              type="button"
+              className={styles.arrow}
+              aria-label="Previous photo"
+              onClick={() => step(-1)}
+            >
+              <ArrowLeft size={18} aria-hidden />
+            </button>
+            <div ref={dots} className={styles.dots} style={dotWindow}>
+              <div className={styles.dotTrack}>
+                {slides.map((slide, index) => (
+                  <button
+                    key={slide.photo.src}
+                    ref={index === active ? activeDot : undefined}
+                    type="button"
+                    className={styles.dot}
+                    data-edge={
+                      (index === firstDot && firstDot > 0) ||
+                      (index === lastDot && lastDot < count - 1) ||
+                      undefined
+                    }
+                    aria-label={`Photo ${index + 1} of ${count}: ${slide.label}`}
+                    aria-controls="home-hero-story home-hero-photo"
+                    aria-current={index === active ? 'true' : undefined}
+                    tabIndex={index >= firstDot && index <= lastDot ? undefined : -1}
+                    onClick={() => selectPhoto(index)}
+                  />
+                ))}
+              </div>
+            </div>
+            <button
+              type="button"
+              className={styles.arrow}
+              aria-label="Next photo"
+              onClick={() => step(1)}
+            >
+              <ArrowRight size={18} aria-hidden />
+            </button>
+          </div>
+
+          <figcaption className={styles.caption}>
+            <strong id="home-hero-event-title">LOOP Youth Experience | LA Clippers</strong>
+            <p id="home-hero-event-caption">
+              Through community partnerships, LOOP brought youth together for an evening of
+              basketball, connection, and fun at the Intuit Dome. A special thank you to the LA
+              Clippers and Islah Academy for helping make this experience possible.
+            </p>
+          </figcaption>
+        </figure>
       </div>
       <p role="status" className="sr-only">
         Photo {active + 1} of {count}: {current.title} {current.emphasis}
